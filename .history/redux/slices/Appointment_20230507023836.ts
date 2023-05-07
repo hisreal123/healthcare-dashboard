@@ -1,4 +1,4 @@
-// import { RootState } from '../store'
+import { RootState } from '../store'
 import {  createSlice } from "@reduxjs/toolkit";
 // import { sub } from "date-fns";
 import {AppointmentState} from '../../typings'
@@ -23,6 +23,6 @@ const appointmentsSlice = createSlice({
 
 
 
-// const allAppointments = (state: RootState) => state.appointments
+const allAppointments = (state: RootState) => state.appointments
 export const createAppointment = appointmentsSlice.actions
 export default appointmentsSlice.reducer

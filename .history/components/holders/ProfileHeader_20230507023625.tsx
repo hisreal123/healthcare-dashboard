@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchBar from '../Misc/SearchBar'
+// import AddNew from '../Misc/AddButton'
 import { BsFillBellFill } from 'react-icons/bs'
 
 
@@ -11,7 +12,7 @@ type ImageWrapperProp = {
 
 type ProfileHeaderProps = {
     handleClick?: React.MouseEventHandler
-    children?: React.ReactNode
+    children: React.ReactNode
 
 }
 export const ImageWrapper = ({ ImageWrapperStyle }: ImageWrapperProp) => {

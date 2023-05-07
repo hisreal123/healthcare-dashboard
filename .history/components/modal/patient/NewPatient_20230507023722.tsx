@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import {  addPatient } from '../../../redux/slices/Patient'
 import { nanoid } from 'nanoid';

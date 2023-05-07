@@ -11,7 +11,7 @@ type ImageWrapperProp = {
 
 type ProfileHeaderProps = {
     handleClick?: React.MouseEventHandler
-    children?: React.ReactNode
+    children: React.ReactNode
 
 }
 export const ImageWrapper = ({ ImageWrapperStyle }: ImageWrapperProp) => {

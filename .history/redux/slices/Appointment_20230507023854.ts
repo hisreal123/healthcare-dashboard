@@ -1,4 +1,4 @@
-// import { RootState } from '../store'
+import { RootState } from '../store'
 import {  createSlice } from "@reduxjs/toolkit";
 // import { sub } from "date-fns";
 import {AppointmentState} from '../../typings'
