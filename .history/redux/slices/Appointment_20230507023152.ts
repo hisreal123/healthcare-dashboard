@@ -9,8 +9,6 @@ const initialState: AppointmentState = {
 }
 
 
-
-
 const appointmentsSlice = createSlice({
     name: 'appointments',
     initialState,

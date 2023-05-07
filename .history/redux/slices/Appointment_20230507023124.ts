@@ -9,8 +9,6 @@ const initialState: AppointmentState = {
 }
 
 
-
-
 const appointmentsSlice = createSlice({
     name: 'appointments',
     initialState,
@@ -20,8 +18,6 @@ const appointmentsSlice = createSlice({
         } */
     }
 })
-
-
 
 const allAppointments = (state: RootState) => state.appointments
 export const createAppointment = appointmentsSlice.actions
