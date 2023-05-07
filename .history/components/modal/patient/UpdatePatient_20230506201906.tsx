@@ -1,0 +1,19 @@
+import React from 'react'
+
+
+function UpdatePatient() {
+
+    return (
+        <>
+            <section className='relative'>
+                <div className="">
+                    <h1>
+                        Update Patient
+                    </h1>
+                </div>
+            </section>
+        </>
+    )
+}
+
+export default UpdatePatient

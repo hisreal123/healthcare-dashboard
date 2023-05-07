@@ -1,0 +1,28 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+// const GENDER =  'M' || 'F',
+
+// const userType = {
+//     id: String,
+//     name: String,
+//     gender: String,
+//     age: Number,
+//     email:String  
+// }
+
+
+const initialState = [
+   
+]
+
+
+
+const usersSlice = createSlice({
+    name: 'users',
+    initialState,
+    reducers : {
+
+    }
+})
+
+export default usersSlice.reducer
