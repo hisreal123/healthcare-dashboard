@@ -1,17 +1,17 @@
-// import  { useState } from 'react'
-// import { useParams } from 'react-router-dom';
+import  { useState } from 'react'
+import { useParams } from 'react-router-dom';
 
-// type UpdateProps = {
-//     open?: boolean
-//     id?: string
-// }
+type UpdateProps = {
+    open?: boolean
+    id?: string
+}
 
 
 
 function UpdatePatient() {
 
-    
-    const showUpdate = false;
+    const PatientId = useParams()
+    const [showUpdate, setShowUpdate] = useState(false);
 
     return (
         <>

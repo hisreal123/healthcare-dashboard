@@ -1,4 +1,4 @@
-// import  { useState } from 'react'
+import  { useState } from 'react'
 // import { useParams } from 'react-router-dom';
 
 // type UpdateProps = {
@@ -11,7 +11,7 @@
 function UpdatePatient() {
 
     
-    const showUpdate = false;
+    const showUpdate= false(false);
 
     return (
         <>

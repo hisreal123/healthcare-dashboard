@@ -39,7 +39,7 @@ const Patient: React.FC = () => {
 
                 <main className="div mt-10">
                     <h1 className='lg:text-3xl'> Patient</h1>
-                    <PatientTable handleToggle={() => { setOpenUpdate(!openUpdate); }} />
+                    <PatientTable handleToggle={(e: any) => { setOpenUpdate(!openUpdate); }} />
 
                     <UpdatePatient />
                 </main>
