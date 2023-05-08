@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/patient",
-        element: <Patient />,
+        element: <Pati,
       },
       {
         path: "/payment",

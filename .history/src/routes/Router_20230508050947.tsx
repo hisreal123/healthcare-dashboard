@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/patient",
-        element: <Patient />,
+        element: lazy(() => import('../views/Patient')),
       },
       {
         path: "/payment",

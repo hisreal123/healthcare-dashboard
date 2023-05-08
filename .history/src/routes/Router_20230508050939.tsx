@@ -9,7 +9,7 @@ import Dashboard from "../views/Dashboard";
 import Appointment from "../views/Appointment";
 import Doctor from "../views/Doctor";
 import Department from "../views/Department";
-import Patient from "../views/Patient";
+import Department from "../views/Department";
 import Payment from "../views/Payment";
 import Help from "../views/Help";
 
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/patient",
-        element: <Patient />,
+        element: lazy(() => import('../views/Patient')),
       },
       {
         path: "/payment",
