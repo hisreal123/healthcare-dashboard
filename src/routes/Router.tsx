@@ -2,26 +2,25 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Navigation from "../components/Misc/Navigation";
+
+import Layout from "../components/Misc/Layout";
 
 import Error from "../routes/Error";
 import Dashboard from "../views/Dashboard";
 import Appointment from "../views/Appointment";
 import Doctor from "../views/Doctor";
 import Department from "../views/Department";
-import Patient from "../views/Patient";
+import Patient from "../views/Patient/Patient";
+import UpdatePatient from "../components/modal/patient/UpdatePatient";
 import Payment from "../views/Payment";
 import Help from "../views/Help";
 
 
-// A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigation />,
+    element: <Layout />,
     errorElement: <Error />,
-
 
     children: [
       {
@@ -43,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/patient",
         element: <Patient />,
+      },
+      {
+        path: "/update/:id",
+        element: <UpdatePatient />,
       },
       {
         path: "/payment",

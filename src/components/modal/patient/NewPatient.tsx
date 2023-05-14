@@ -5,18 +5,22 @@ import { Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { addPatient } from '../../../redux/slices/Patient'
 import { nanoid } from 'nanoid';
 
+
+import sha1 from 'crypto-js/sha1';
+
 export default function NewPatient(args: any) {
 
-    const [name, setName] = useState<string>('')
-    const [age, setAge] = useState<number>(0)
+    const [fname, setFname] = useState<string>('')
+    const [lname, setLname] = useState<string>('')
     const [email, setEmail] = useState<string>('')
+    const [age, setAge] = useState<number>(0)
+    const [blg, setblg] = useState<string>('')
     const [gender, setGender] = useState<string>('')
 
-    // redux tools to access store and states
-    // const patients = useSelector(selectAllPatient);
+
     const dispatch = useDispatch();
 
-    // for modal 
+    // for modal
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
@@ -25,47 +29,71 @@ export default function NewPatient(args: any) {
     const convertAge: string = age.toString()
 
     // allDetails checker
-    const allCheck = name && convertAge && email && gender
+    const allCheck = Boolean(fname) && Boolean(lname) && Boolean(convertAge) && Boolean(email) && Boolean(gender)
+
+    // image
+    // firstName
+    // lastName
+    // email
+    // age
+    // bloodGroup
+    // gender
+
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
 
         if (allCheck) {
             dispatch(addPatient({
-                id: nanoid(),
-                name: name,
+                id: parseInt(sha1(nanoid()).toString().slice(0, 8), 8) + 30,
+                firstName: fname,
+                lastName: lname,
                 email: email,
                 age: age,
-                gender: gender
+                gender: gender,
+                bloodGroup: blg
             }))
-        }
+            }
         // reset Inputs
-        setName('')
-        setAge(0)
-        setEmail('')
-        setGender('')
 
+        setFname('')
+        setLname('')
+        setEmail('')
+        setAge(0)
+        setblg('')
+        setGender('')
     }
 
     return (
         <>
-
             <Modal isOpen={modal} toggle={toggle} {...args} className='rounded-none' >
                 <ModalHeader toggle={toggle}>New Patient</ModalHeader>
                 <ModalBody>
                     {/* Html5 form  */}
                     <form onSubmit={handleSubmit}>
-                        {/* reactstrap input blablabla */}
+                        {/* reactstrap input  */}
                         <Label for="Name">
-                            Name
+                            First Name
                         </Label>
                         <Input
-                            id="name"
-                            name="name"
-                            placeholder="Enter Name"
+                            id="Firstname"
+                            name="Firstname"
+                            placeholder="Enter Firstname"
                             type="text"
-                            value={name}
-                            onChange={(e) => { setName(e.target.value) }}
+                            value={fname}
+                            onChange={(e) => { setFname(e.target.value) }}
+                            required
+                        />
+                        <Label for="Name">
+                            Last Name{/*  */}
+                        </Label>
+                        <Input
+                            id="Lastname"
+                            name="Lastname"
+                            placeholder="Enter Lastname"
+                            type="text"
+                            value={lname}
+                            onChange={(e) => { setLname(e.target.value) }}
                             required
                         />
                         <Label for="PatientEmail">
@@ -80,7 +108,6 @@ export default function NewPatient(args: any) {
                             onChange={(e) => { setEmail(e.target.value) }}
                             required
                         />
-
                         <Label for="age">
                             Age
                         </Label>
@@ -93,7 +120,18 @@ export default function NewPatient(args: any) {
                             onChange={(e) => { setAge(parseInt(e.target.value)) }}
                             required
                         />
-
+                        <Label for="Name">
+                            Blood Group
+                        </Label>
+                        <Input
+                            id="blg"
+                            name="blg"
+                            placeholder="Enter Blood Group"
+                            type="text"
+                            value={blg}
+                            onChange={(e) => { setblg(e.target.value) }}
+                            required
+                        />
                         <Label for="gender">
                             Gender
                         </Label>
@@ -110,19 +148,18 @@ export default function NewPatient(args: any) {
 
                             </option>
                             <option>
-                                M
+                                Male
                             </option>
                             <option>
-                                F
+                                Female
                             </option>
 
                         </Input>
                         <button
                             type='submit'
                             className={`${!allCheck ? ' bg-gray-200' : 'bg-[#5282FB] hover:bg-[#0e46d3]'} disabled:cursor-not-allowed  text-white font-light text-lg  mt-3 w-full relative py-2 rounded-sm `}
-                            disabled={!allCheck ? true : false}
+                            disabled={!allCheck}
                         >Submit
-
                         </button>
                     </form>
                 </ModalBody>

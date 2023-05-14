@@ -1,37 +1,31 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { list } from "../../data/Links";
 
-
 export default function Navigation() {
+  return (
+    <>
+      <section className="shadow-xl pt-32">
+        <aside id="sidebar" className="group ">
+          <div className="warp relative h-full group-hover:w-full transition ease-in-out delay-150 ">
+            {/* nav */}
+            <nav className="relative h-full">
+              <ul className="flex flex-col relative h-screen items-start group">
+                {list.map((list , index) => {
+                  return (
+                    <li key={index} className=" py-3 px-2 flex items-center group-hover:space-x-2">
+                      <span className="text-gray-500 group-hover:text-gray-600 text-md hover:cursor-pointer text-xl ">{list.icon}</span>
+                      <Link to={`${list.link}`} className="focus:text-[#5282FB`] hidden group-hover:block scale-x-50 group-hover:scale-x-105 transition-all ">{list.name}</Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </nav>
+          </div>
+        </aside>
 
-    return (
-        <>
-            <section className="flex space-x-4 -z-10">
-                <div id="sidebar" className="  h-screen shadow-xl group">
-                    <div className="px-4 ">
+      
 
-                        {/* logo */}
-                        <div >
-                            <h1 className="py-5 text-[#5282FB] font-bold">Healthcare</h1>
-                        </div>
-
-                        {/* nav */}
-                        <nav className="relative pr-5 ">
-                            <ul className="relative">
-                                {list.map((list, index) => {
-                                    return (
-                                        <li key={index} className="flex space-x-2 items-center py-3 last:border-t ">
-                                            <span className="text-gray-200/70 text-md ">{list.icon}</span>
-                                            <Link to={`${list.link}`} className="focus:text-[#5282FB]">{list.name}</Link>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div id="detail" className="relative w-full"><Outlet /></div>
-            </section>
-        </>
-    );
+      </section>
+    </>
+  )
 }

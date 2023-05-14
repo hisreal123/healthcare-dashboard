@@ -1,65 +1,46 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { selectAllPatient } from '../../redux/slices/Patient'
-import { ImageWrapper } from '../holders/ProfileHeader'
-import { Patient } from '../../../typings'
-
-type PatientState = Patient[];
-
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Person } from '../../../typings';
+import { selectAllPatient, getPatientStatus } from '../../redux/slices/Patient';
+import PatientExtract from '../../views/Patient/PatientExtract';
+import Loader from '../../components/Misc/Loader';
 
 type PatientTableProps = {
-    patientStyle?: React.CSSProperties,
-    handleToggle: any
-}
+    patientStyle?: React.CSSProperties;
+};
 
+export default function PatientTable({ patientStyle }: PatientTableProps) {
+    // @ts-ignore
+    const patients = useSelector(selectAllPatient) as Person[];
+    const status = useSelector(getPatientStatus);
 
-export default function PatientTable({ patientStyle, handleToggle }: PatientTableProps) {
-
-    const patients: PatientState = useSelector(selectAllPatient);
-    console.log(patients)
-
-
-    const PatientList = patients.map((patient: Patient, index: number) => {
-        return (
-            <>
-                <tbody key={index} className=" relative">
-                    <tr key={index}>
-                        <td className='flex items-center space-x-2 py-2 px-2'>
-
-                            <ImageWrapper ImageWrapperStyle='h-4 w-4 block' />
-
-                            <a href=''>
-                                {patient.name}
-                            </a>
-                        </td>
-                        <td>{patient.email}</td>
-                        <td>{patient.age}</td>
-                        <td>{patient.gender}</td>
-                        <td className="cursor-pointer hover:font-bold" onClick={handleToggle}>Update</td>
-                    </tr>
-                </tbody>
-            </>
-        )
-    })
-
+    let patientContent;
+    if (status === 'succeeded') {
+        patientContent = patients.map((patient) => (
+            <PatientExtract key={patient.id} patient={patient} />
+        ));
+    } else if (status === 'failed') {
+        patientContent = <h1>Error loading patients from server.</h1>;
+    }
 
     return (
-        <>
-            <section className={`${patientStyle} mt-10 bg-white shadow-lg relative`}>
-                {/* <h1> Patient tables ..</h1> */}
-                <table className="relative w-full">
-                    <thead className="">
-                        <tr className='border-b bg-red-300'>
-                            <th className=" py-2 pl-2">Name</th>
-                            <th>Age</th>
-                            <th>Email</th>
-                            <th>Gender</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    {PatientList}
-                </table>
-            </section>
-        </>
-    )
+        <section className={`${patientStyle} mt-10 bg-white shadow-lg relative`}>
+            <table className="table table-auto relative w-full">
+                <thead className="table-header-group rounded-t-lg">
+                <tr className="table-row bg-gray-400">
+                    <th className="py-3"></th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th className="hidden lg:table-cell">Email</th>
+                    <th className="hidden lg:table-cell">Gender</th>
+                    <th className="text-center">BloodGroup</th>
+                    <th className="hidden lg:table-cell">Action</th>
+                </tr>
+                </thead>
+                <tbody className="relative space-y-2">
+                {status === 'loading' ? <Loader /> : patientContent}
+                </tbody>
+            </table>
+        </section>
+    );
 }
