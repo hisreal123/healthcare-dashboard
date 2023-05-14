@@ -3,9 +3,12 @@ import { AiOutlineSearch } from 'react-icons/ai'
 
 type SearchProps = {
     SearchInputStyle?: string
+    mainStyle?: string
+    wrapperStyle?: string
+    SPlaceholder?  : string
 }
 
-export default function SearchBar({ SearchInputStyle }: SearchProps) {
+export default function SearchBar({ SearchInputStyle, mainStyle, wrapperStyle , SPlaceholder}: SearchProps) {
     const [name, setName] = React.useState('');
 
 
@@ -21,14 +24,14 @@ export default function SearchBar({ SearchInputStyle }: SearchProps) {
     }
     return (
         <>
-            <div className="relative flex  lg:w-[70%] rounded-3xl overflow-hidden border items-center  ">
-                <form className='flex items-center' onSubmit={handleFormSearch}>
+            <div className={`${wrapperStyle} relative flex  lg:w-[70%] rounded-3xl overflow-hidden border items-center  `}>
+                <form className={ `${mainStyle} flex items-center`} onSubmit={handleFormSearch}>
                     <span className='px-3 relative'>
                         <AiOutlineSearch className="text-gray-300" onClick={handleSearchClicked} />
                     </span>
                     <input
                         type="text"
-                        placeholder='search'
+                        placeholder={SPlaceholder || 'search'}
                         className={`${SearchInputStyle}  outline-none w-full py-2 pl-3 `}
                         aria-expanded
                         value={name}

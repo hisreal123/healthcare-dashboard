@@ -1,37 +1,28 @@
 // import React from 'react
 // import { Suspense} from "react";
-// import {CreditCard} from "../components/Misc/CreditCard";
-import {Form, FormGroup, Input, Label} from "reactstrap";
+import {CreditCard} from "../components/Misc/CreditCard";
+import {PayPal} from "../components/Misc/PayPal";
 
 // @ts-ignore
 
 
-type tTypes = {
-    toggle: boolean,
-    image : string,
-    title : string,
-    caption: string
-}
-
-const PaymentOption: tTypes[]  = [
-    {
-        toggle: true,
-        image : '../mastercard.png',
-        title : 'Credit Card',
-        caption: 'safe money transfer using your bank account Visa, Mastro'
-    },
-    {
-        toggle: true,
-        image : '../paypal.png',
-        title : 'PayPal',
-        caption: 'Credit card needed, safe payment online, PayPal account is necessary '
-    },
-]
-
-
+import {useState} from "react";
 
 
 export default function Payment() : JSX.Element {
+const [checkMaster, setCheckMaster] = useState(true);
+const [checkPayPal, setCheckPayPal] = useState(false);
+
+    const handleCheckMaster = (event: any) => {
+        setCheckMaster(event.target.checked);
+        setCheckPayPal(false);
+    };
+
+    const handleCheckPayPal = (event: any) => {
+        setCheckPayPal(event.target.checked);
+        setCheckMaster( false );
+    };
+
     // @ts-ignore
     return (
         <>
@@ -45,42 +36,52 @@ export default function Payment() : JSX.Element {
                     </div>
 
                     {/* choose wisely */}
-                    <div className='grid grid-cols-2 gap-5 mt-4'>
-                        {PaymentOption.map((pType, index) => {
-                            return(
-                                <div className=' relative border-2 p-4 hover:bg-blue-200 hover:border-blue-500 rounded-lg' key={index || pType.title}>
-                                    <p>{pType.image}</p>
-                                    <h2 className=' relativetitle text-lg lg:text-xl text-gray-800/70 mb-2'>{pType.title}</h2>
-                                    <span className='relative caption block text-xs text-gray-500 '>{pType.caption}</span>
+                    <div className='grid grid-cols-2 gap-5 my-5'>
+                                <div className=' flex items-start relative border-2 p-4 hover:bg-blue-200 hover:border-blue-500 rounded-lg' >
+                                    <input
+                                        type="checkbox"
+                                        className='border-2 mr-2 mt-2 disabled:cursor-not-allowed '
+                                        checked={checkMaster}
+                                        onChange={handleCheckMaster}
+                                        disabled={true}
+                                    />
+                                    <div>
+                                        <img src='../mastercard.png'  className='h-8'/>
+                                        <h2 className=' relativetitle text-lg lg:text-xl text-gray-800/70 mb-2'>Credit Card</h2>
+                                        <span className='relative caption block text-xs text-gray-500 '>safe money transfer using your bank account Visa, Mastro</span>
+                                    </div>
                                 </div>
-                            )
-                        })}
+
+                        <div className=' flex items-start relative border-2 p-4 hover:bg-blue-200 hover:border-blue-500 rounded-lg' >
+                                    <input
+                                        type="checkbox"
+                                        className='border-2 mr-2 mt-2 '
+                                        checked={checkPayPal}
+                                        onChange={handleCheckPayPal}
+                                    />
+                                    <div>
+                                        <img src='../paypal.png'  className='h-8' />
+                                        <h2 className=' relativetitle text-lg lg:text-xl text-gray-800/70 mb-2'>PayPal</h2>
+                                        <span className='relative caption block text-xs text-gray-500 '>Credit card needed, safe payment online, PayPal account is necessary </span>
+                                    </div>
+                                </div>
+
                     </div>
+
+
+                {/*    Display*/}
+                    {
+                        checkPayPal ? (
+                        <PayPal />
+                    ): (
+                        <CreditCard />
+                    )}
                 </div>
 
                 <div className='right hidden lg:block'>
                     <h1> Right</h1>
                 </div>
-                <Form>
-                    <FormGroup
-                        check
-                        inline
-                    >
-                        <Input type="checkbox" />
-                        <Label check>
-                            Some input
-                        </Label>
-                    </FormGroup>
-                    <FormGroup
-                        check
-                        inline
-                    >
-                        <Input type="checkbox" />
-                        <Label check>
-                            Some other input
-                        </Label>
-                    </FormGroup>
-                </Form>
+
             </main>
             </section>
         </>

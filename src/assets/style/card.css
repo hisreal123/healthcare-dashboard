@@ -1,0 +1,48 @@
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+.card {
+    @apply w-[200px] h-[170px] rounded-[10px] text-white grid cursor-pointer grid-rows-[50px_1fr];
+    --primary-clr: #1c204b;
+    --dot-clr: #bbc0ff;
+    --play: hsl(195, 74%, 62%);
+}
+.card {
+    font-family: "Arial";
+}
+.card:hover .img-section {
+    @apply translate-y-[1em];
+}
+.card-desc {
+    @apply relative grid gap-2.5 p-[15px] rounded-[10px] -top-2.5;
+    background: var(--primary-clr);
+}
+.card-time {
+    @apply text-[1.7em] font-medium;
+}
+.img-section {
+    @apply transition-[0.2s] duration-[cubic-bezier(0.25,0.46,0.45,0.94)] rounded-t-[10px];
+    background: hsl(195, 74%, 62%);
+}
+.card-header {
+    @apply flex items-center w-full;
+}
+.card-title {
+    @apply flex-1 text-[0.9em] font-medium;
+}
+.card-menu {
+    @apply flex gap-1;
+    margin-inline: auto;
+}
+.card svg {
+    @apply float-right max-w-full max-h-full;
+}
+.card .dot {
+    @apply w-[5px] h-[5px] rounded-[50%];
+    background: var(--dot-clr);
+}
+.card .recent {
+    @apply leading-[0] text-[0.8em];
+}

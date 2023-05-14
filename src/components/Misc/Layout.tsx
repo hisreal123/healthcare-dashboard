@@ -12,9 +12,7 @@ const Layout = () => {
 
     return (
         <Fragment>
-
             <ProfileHeader />
-
             <section className='flex'>
 
                 <Navigation />
@@ -23,6 +21,7 @@ const Layout = () => {
                     <Outlet/>
                 </div>
             </section>
+
 
         </Fragment>
     )

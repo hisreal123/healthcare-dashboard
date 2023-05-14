@@ -1,6 +1,6 @@
 import { GiStethoscope, GiPerson, GiNurseMale } from 'react-icons/gi'
 import { FaWheelchair } from 'react-icons/fa'
-import { AiOutlineCreditCard, AiOutlinePieChart } from 'react-icons/ai'
+import { AiOutlineCreditCard } from 'react-icons/ai'
 import { BiHelpCircle } from 'react-icons/bi'
 
 
@@ -15,42 +15,36 @@ type Class = {
 export const list: Class[] = [
     {
         id: 1,
-        icon: <AiOutlinePieChart />,
-        name: 'Dashboard',
-        link: 'dashboard',
-    },
-    {
-        id: 2,
         icon: <GiStethoscope />,
         name: 'Appointment',
         link: 'appointment',
     },
     {
-        id: 3,
+        id: 2,
         icon: <GiPerson />,
         name: 'Doctor',
         link: 'doctor',
     },
     {
-        id: 4,
+        id: 3,
         icon: <GiNurseMale />,
         name: 'Department',
         link: 'department',
     },
     {
-        id: 5,
+        id: 4,
         icon: <FaWheelchair />,
         name: 'Patient',
         link: 'patient',
     },
     {
-        id: 6,
+        id: 5,
         icon: <AiOutlineCreditCard />,
         name: 'Payment',
         link: 'payment',
     },
     {
-        id: 7,
+        id: 6,
         icon: <BiHelpCircle />,
         name: 'Help',
         link: 'help',

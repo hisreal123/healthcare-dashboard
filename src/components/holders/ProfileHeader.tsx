@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 
 type ImageWrapperProp = {
     ImageWrapperStyle?: string
@@ -24,7 +25,11 @@ export default function ProfileHeader() : JSX.Element {
         <>
             <section className='flex relative w-full bg-white border-b py-3 mb-2'>
                 <div>
-                    <h1 className=" px-2 text-[#5282FB] font-bold">Healthcare</h1>
+                    <h1 className="">
+                        <Link to='/' className=' px-2 text-[#5282FB] font-bold'>
+                            Healthcare
+                        </Link>
+                    </h1>
                 </div>
             </section>
         </>

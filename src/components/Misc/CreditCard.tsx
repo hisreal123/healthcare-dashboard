@@ -36,7 +36,6 @@ export const CreditCard = () => {
 
 	const handleSubmit = (e:any ) => {
 		e.peventDefault();
-
 	};
 
 	return (
