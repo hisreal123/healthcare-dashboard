@@ -16,13 +16,13 @@ type tTypes = {
 const PaymentOption: tTypes[]  = [
     {
         toggle: true,
-        image : '',
+        image : '../mastercard.png',
         title : 'Credit Card',
         caption: 'safe money transfer using your bank account Visa, Mastro'
     },
     {
         toggle: true,
-        image : '',
+        image : '../paypal.png',
         title : 'PayPal',
         caption: 'Credit card needed, safe payment online, PayPal account is necessary '
     },
