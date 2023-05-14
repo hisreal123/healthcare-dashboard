@@ -141,7 +141,7 @@ export default function NewDoctor(args: any) {
                         <button
                             type='submit'
                             className={`${!allCheck ? ' bg-gray-200' : 'bg-[#5282FB] hover:bg-[#0e46d3]'} disabled:cursor-not-allowed  text-white font-light text-lg  mt-3 w-full relative py-2 rounded-sm `}
-                            disabled={!allCheck ? true : false}
+                            disabled={!allCheck}
                         >Submit
 
                         </button>

@@ -19,7 +19,7 @@ export default function DoctorTable({ doctorStyle, handleToggle }: DoctorTablePr
     console.log(doctors)
 
 
-    const DoctorState = doctors.map((doctor: Doctor, index: number) => {
+    const doctorState = doctors.map((doctor: Doctor, index: number) => {
         return (
             <>
                 <tbody key={index} className=" relative">
@@ -59,7 +59,7 @@ export default function DoctorTable({ doctorStyle, handleToggle }: DoctorTablePr
                             <th>Action</th>
                         </tr>
                     </thead>
-                    {DoctorState}
+                    {doctorState}
                 </table>
             </section>
         </>
